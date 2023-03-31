@@ -1,6 +1,8 @@
 package fr.tpnote.gestionnairebanque;
 
-public class Taux {
+import java.io.Serializable;
+
+public class Taux implements Serializable {
     private double tauxInferieur;
     private double tauxSuperieur;
     private double tauxAApliquer;
