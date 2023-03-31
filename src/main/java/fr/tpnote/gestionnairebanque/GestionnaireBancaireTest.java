@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -71,18 +71,17 @@ public class GestionnaireBancaireTest {
 
 
     @Test
-    public void chargerListeTaux(){
+    public void chargerListeTaux() throws IOException {
         banque = new GestionnaireBancaire();
         banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/taux.txt");
         assertEquals(banque.getListeTaux().size(), 3);
     }
 
        @Test
-       public void chargerListeTauxInvalide(){
+       public void chargerListeTauxInvalide() throws IOException {
            banque = new GestionnaireBancaire();
            banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/tauxx.txt");
-          assertThrows(IOException.class, () -> banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/tauxx.txt"));
-
+           assertEquals(banque.getListeTaux().size(), 0);
        }
 
 

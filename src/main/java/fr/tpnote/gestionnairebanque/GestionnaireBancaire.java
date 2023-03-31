@@ -84,5 +84,11 @@ public class GestionnaireBancaire {
         }
     }
 
+    public Double getSolde() {
+        return solde;
+    }
 
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
 }
