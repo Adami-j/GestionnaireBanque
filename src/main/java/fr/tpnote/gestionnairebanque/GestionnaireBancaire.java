@@ -61,7 +61,7 @@ public class GestionnaireBancaire {
                 this.solde+=transaction.getValeur()-transaction.getValeur()*t.getTauxAApliquer();
                 break;
             case 'd':
-                this.solde+=transaction.getValeur();
+                this.solde-=transaction.getValeur();
                 break;
             default:
                 throw new IllegalArgumentException("Type de transaction incorrect");
