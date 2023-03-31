@@ -1,4 +1,47 @@
 package fr.tpnote.gestionnairebanque;
 
 public class Taux {
+    private double tauxInferieur;
+    private double tauxSuperieur;
+    private double tauxAApliquer;
+    private String nomTaux;
+
+    public Taux(String nom, int tauxInferieur, int tauxSuperieur, double tauxAApliquer) {
+        this.nomTaux = nom;
+        this.tauxInferieur = tauxInferieur;
+        this.tauxSuperieur = tauxSuperieur;
+        this.tauxAApliquer = tauxAApliquer;
+    }
+
+    public double getTauxInferieur() {
+        return tauxInferieur;
+    }
+
+    public void setTauxInferieur(double tauxInferieur) {
+        this.tauxInferieur = tauxInferieur;
+    }
+
+    public double getTauxSuperieur() {
+        return tauxSuperieur;
+    }
+
+    public void setTauxSuperieur(double tauxSuperieur) {
+        this.tauxSuperieur = tauxSuperieur;
+    }
+
+    public double getTauxAApliquer() {
+        return tauxAApliquer;
+    }
+
+    public void setTauxAApliquer(double tauxAApliquer) {
+        this.tauxAApliquer = tauxAApliquer;
+    }
+
+    public String getNomTaux() {
+        return nomTaux;
+    }
+
+    public void setNomTaux(String nomTaux) {
+        this.nomTaux = nomTaux;
+    }
 }
