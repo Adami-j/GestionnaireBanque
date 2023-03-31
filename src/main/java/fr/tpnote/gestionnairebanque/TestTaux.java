@@ -112,6 +112,12 @@ public class TestTaux {
         assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(35));
     }
 
+    @Test
+    public void transactionNulle(){
+        taux = new Taux("nom",0,100,200);
+        assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(0));
+    }
+
 
 
 
