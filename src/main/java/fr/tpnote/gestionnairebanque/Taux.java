@@ -46,4 +46,8 @@ public class Taux implements Serializable {
     public void setNomTaux(String nomTaux) {
         this.nomTaux = nomTaux;
     }
+
+    public boolean transactionPossible(int i) {
+        return true;
+    }
 }
