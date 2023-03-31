@@ -8,7 +8,7 @@ public class Taux implements Serializable {
     private double tauxAApliquer;
     private String nomTaux;
 
-    public Taux(String nom, int tauxInferieur, int tauxSuperieur, double tauxAApliquer) {
+    public Taux(String nom, double tauxInferieur, double tauxSuperieur, double tauxAApliquer) {
         this.nomTaux = nom;
         this.tauxInferieur = tauxInferieur;
         this.tauxSuperieur = tauxSuperieur;
