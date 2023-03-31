@@ -46,7 +46,7 @@ public class GestionnaireBancaire {
                 t = taux;
             }}
             catch(IllegalArgumentException e){
-               throw new IllegalArgumentException("Taux incorrect");
+
             }
         }
 

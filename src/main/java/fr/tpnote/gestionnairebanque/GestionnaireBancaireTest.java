@@ -13,30 +13,30 @@ public class GestionnaireBancaireTest {
 
     GestionnaireBancaire banque;
     @Test
-    public void testInitialisationGestionnaireBanque(){
+    public void testInitialisationGestionnaireBanque() throws IOException {
         banque = new GestionnaireBancaire();
     }
 
       @Test
-    public void testInitialisationGestionnaireRecupererListeTransaction() {
+    public void testInitialisationGestionnaireRecupererListeTransaction() throws IOException {
           banque = new GestionnaireBancaire();
           assertEquals( banque.getListeTransaction(), new ArrayList<Transaction>());
       }
 
       @Test
-      public void testTailleVideListeTransaction() {
+      public void testTailleVideListeTransaction() throws IOException {
           banque = new GestionnaireBancaire();
           assertEquals( banque.getListeTransaction().size(), 0);
       }
       @Test
-    public void testAjoutTransaction() {
+    public void testAjoutTransaction() throws IOException {
             banque = new GestionnaireBancaire();
             banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
             assertEquals( banque.getListeTransaction().size(), 1);
     }
 
     @Test
-    public void testtransactionNegative() {
+    public void testtransactionNegative() throws IOException {
         banque = new GestionnaireBancaire();
         banque.getListeTransaction().add(new Transaction("test", 'c', -15d));
         banque.getListeTaux().add(new Taux("test", 0, 100, 10));
@@ -46,14 +46,14 @@ public class GestionnaireBancaireTest {
     }
 
     @Test
-    public void testtransactionValeurZero() {
+    public void testtransactionValeurZero() throws IOException {
         banque = new GestionnaireBancaire();
         banque.getListeTaux().add(new Taux("test", 0, 100, 10));
         assertThrows(IllegalArgumentException.class, () -> banque.addTransaction(new Transaction("test", 'c', 0d)));
     }
 
     @Test
-    public void testTauxCorrect(){
+    public void testTauxCorrect() throws IOException {
         banque = new GestionnaireBancaire();
         banque.getListeTaux().add(new Taux("test", 0, 100, 10));
         banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
@@ -62,7 +62,7 @@ public class GestionnaireBancaireTest {
     }
 
     @Test
-    public void testTauxAppliqueIncorrect(){
+    public void testTauxAppliqueIncorrect() throws IOException {
         banque = new GestionnaireBancaire();
         banque.getListeTaux().add(new Taux("test", 0, 100, -10));
         banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
