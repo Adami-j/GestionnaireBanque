@@ -46,7 +46,8 @@ public class GestionnaireBancaire {
     public void addTransaction(Transaction transaction)throws IllegalArgumentException{
         Taux t = this.getTauxVoulu();
         System.out.println(t);
-        if(t==null||t.transactionPossible((int) transaction.getValeur())==false){
+        System.out.println(t.transactionPossible((double) transaction.getValeur()));
+        if(t==null||t.transactionPossible((double) transaction.getValeur())==false){
             throw new IllegalArgumentException("Transaction impossible : vérifiez les taux");
         }
         this.getListeTransaction().add(transaction);
