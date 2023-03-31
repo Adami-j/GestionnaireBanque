@@ -32,6 +32,11 @@ public class Controller {
     public Controller() {
     }
 
+    /**
+     * @author Julien ADAMI
+     * méthode d'initialisation qui place les items dans la combo list et qui appelle le gestionnaire bancaire
+     * @throws IOException
+     */
     @FXML
     public void initialize() throws IOException {
         banque = new GestionnaireBancaire();
@@ -42,6 +47,11 @@ public class Controller {
 
     }
 
+    /**
+     * @author Julien ADAMI
+     * méthode du bouton enregistrer qui ajoute une transaction à la liste view
+     * @param actionEvent
+     */
     @FXML
     public void actionEnregistrer(ActionEvent actionEvent) {
         char type;
