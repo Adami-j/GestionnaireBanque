@@ -18,6 +18,6 @@ public class GestionnaireBancaireTest {
       @Test
     public void testInitialisationGestionnaireRecupererListeTransaction() {
           banque = new GestionnaireBancaire();
-          assertEquals( banque.getListeTransaction(), new ArrayList<Transaction>());
+          assertEquals( banque.getListeTransaction().toArray(), new ArrayList<Transaction>());
       }
 }
