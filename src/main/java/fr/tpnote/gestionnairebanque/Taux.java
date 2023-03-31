@@ -48,7 +48,7 @@ public class Taux implements Serializable {
     }
 
     public boolean transactionPossible(int i) {
-        if(i<this.getTauxInferieur() || i>this.getTauxSuperieur()){
+        if(i<this.getTauxInferieur() || i>this.getTauxSuperieur() || this.getTauxAApliquer() < 0){
             return false;
         }
         return true;
