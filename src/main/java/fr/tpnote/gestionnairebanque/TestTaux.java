@@ -64,11 +64,34 @@ public class TestTaux {
     }
 
     @Test
-    public void testTransactionpossible(){
+    public void testTransactionPossible(){
             taux = new Taux("nom",0,10,0.1);
             assertEquals(taux.transactionPossible(5),true);
     }
 
+    @Test
+    public void testTransactionImpossible(){
+            taux = new Taux("nom",0,10,0.1);
+            assertEquals(taux.transactionPossible(11),false);
+    }
+
+    @Test
+    public void testTransactionImpossibleNegative(){
+            taux = new Taux("nom",0,10,0.1);
+            assertEquals(taux.transactionPossible(-1),false);
+    }
+
+    @Test
+    public void testTransactionImpossiblePalierSUp(){
+            taux = new Taux("nom",20,100,0.1);
+            assertEquals(taux.transactionPossible(35),true);
+    }
+
+    @Test
+    public void testTransactionImpossiblePalierInf(){
+            taux = new Taux("nom",20,100,0.1);
+            assertEquals(taux.transactionPossible(15),false);
+    }
 
 
 
