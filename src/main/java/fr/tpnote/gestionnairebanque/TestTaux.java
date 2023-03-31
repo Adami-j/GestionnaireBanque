@@ -99,6 +99,13 @@ public class TestTaux {
             assertEquals(taux.transactionPossible(35),false);
     }
 
+    @Test
+    public void testTransactionTauxTropGrand(){
+        taux = new Taux("nom",20,100,200);
+        assertEquals(taux.transactionPossible(35),false);
+    }
+
+
 
 
 }
