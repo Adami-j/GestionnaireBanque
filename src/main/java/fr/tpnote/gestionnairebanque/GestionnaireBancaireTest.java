@@ -47,8 +47,32 @@ public class GestionnaireBancaireTest {
     @Test
     public void testtransactionValeurZero() {
         banque = new GestionnaireBancaire();
-        banque.getListeTransaction().add(new Transaction("test", 'c', 0d));
-        assertEquals( banque.getListeTransaction().size(), 0d,0);
+        banque.getListeTaux().add(new Taux("test", 0, 100, 10));
+        assertThrows(IllegalArgumentException.class, () -> banque.addTransaction(new Transaction("test", 'c', 0d)));
+    }
+
+    @Test
+    public void testTauxCorrect(){
+        banque = new GestionnaireBancaire();
+        banque.getListeTaux().add(new Taux("test", 0, 100, 10));
+        banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
+        banque.addTransaction(new Transaction("test", 'c', 15d));
+        assertEquals(banque.getListeTransaction().size(), 2);
+    }
+
+    @Test
+    public void testTauxAppliqueIncorrect(){
+        banque = new GestionnaireBancaire();
+        banque.getListeTaux().add(new Taux("test", 0, 100, -10));
+        banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
+        assertThrows(IllegalArgumentException.class, () -> banque.addTransaction(new Transaction("test", 'c', 15d)));
+    }
+
+
+    @Test
+    public void chargerListeTaux(){
+        banque = new GestionnaireBancaire();
+        assertEquals(banque.getListeTaux().size(), 2);
     }
 
 
