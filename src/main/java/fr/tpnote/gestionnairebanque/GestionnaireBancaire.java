@@ -57,7 +57,7 @@ public class GestionnaireBancaire {
     }
 
 
-    public void recupererFichierTaux(String cheminFichier) {
+    public void recupererFichierTaux(String cheminFichier) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(cheminFichier))) {
             String ligne;
             while ((ligne = reader.readLine()) != null) {
@@ -82,6 +82,7 @@ public class GestionnaireBancaire {
             }
         } catch (IOException e) {
             System.err.println("Erreur lors de la lecture du fichier " + cheminFichier + " : " + e.getMessage());
+
         }
     }
 
