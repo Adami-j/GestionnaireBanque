@@ -2,6 +2,7 @@ package fr.tpnote.gestionnairebanque;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,8 +73,20 @@ public class GestionnaireBancaireTest {
     @Test
     public void chargerListeTaux(){
         banque = new GestionnaireBancaire();
-        assertEquals(banque.getListeTaux().size(), 2);
+        banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/taux.txt");
+        assertEquals(banque.getListeTaux().size(), 3);
     }
+
+       @Test
+       public void chargerListeTauxInvalide(){
+           banque = new GestionnaireBancaire();
+           banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/tauxx.txt");
+          assertThrows(IOException.class, () -> banque.recupererFichierTaux("src/main/resources/fr/tpnote/gestionnairebanque/Data/tauxx.txt"));
+
+       }
+
+
+
 
 
 }
