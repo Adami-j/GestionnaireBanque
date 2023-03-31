@@ -3,6 +3,7 @@ package fr.tpnote.gestionnairebanque;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class TestTaux {
     Taux taux;
@@ -72,37 +73,43 @@ public class TestTaux {
     @Test
     public void testTransactionImpossible(){
             taux = new Taux("nom",0,10,0.1);
-            assertEquals(taux.transactionPossible(11),false);
+
+            assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(11));
     }
 
     @Test
     public void testTransactionImpossibleNegative(){
             taux = new Taux("nom",0,10,0.1);
-            assertEquals(taux.transactionPossible(-1),false);
+
+            assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(-1));
     }
 
     @Test
     public void testTransactionImpossiblePalierSUp(){
             taux = new Taux("nom",20,100,0.1);
             assertEquals(taux.transactionPossible(35),true);
+
     }
 
     @Test
     public void testTransactionImpossiblePalierInf(){
             taux = new Taux("nom",20,100,0.1);
-            assertEquals(taux.transactionPossible(15),false);
+
+        assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(15));
     }
 
     @Test
     public void testTransactionTauxNegatif(){
             taux = new Taux("nom",20,100,-0.1);
-            assertEquals(taux.transactionPossible(35),false);
+
+        assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(35));
     }
 
     @Test
     public void testTransactionTauxTropGrand(){
         taux = new Taux("nom",20,100,200);
-        assertEquals(taux.transactionPossible(35),false);
+
+        assertThrows(IllegalArgumentException.class, () -> taux.transactionPossible(35));
     }
 
 
