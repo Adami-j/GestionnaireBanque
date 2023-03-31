@@ -48,6 +48,9 @@ public class Taux implements Serializable {
     }
 
     public boolean transactionPossible(int i) {
+        if(i>10){
+            return false;
+        }
         return true;
     }
 }
