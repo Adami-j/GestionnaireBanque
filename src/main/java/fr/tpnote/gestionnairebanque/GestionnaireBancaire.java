@@ -12,6 +12,12 @@ public class GestionnaireBancaire {
     private List<Taux> listeTaux = null;
     private Double solde;
 
+    /**
+     * @author Julien ADAMI
+     * constructeur qui initialise la liste des taux et la liste des transactions
+     * et qui récupère les transactions du fichier en paramètre
+     * @throws IOException
+     */
     public GestionnaireBancaire() throws IOException {
         solde=0d;
         this.listeTransaction = new ArrayList<>();
@@ -40,20 +46,23 @@ public class GestionnaireBancaire {
                 t = taux;
             }}
             catch(IllegalArgumentException e){
-
+               throw new IllegalArgumentException("Taux incorrect");
             }
         }
 
         return t;
     }
 
-    public void setListeTaux(List<Taux> listeTaux) {
-        this.listeTaux = listeTaux;
-    }
-
+    /**
+     * @author Julien ADAMI
+     * Ajoute une transaction à la liste des transactions
+     * et modifie le solde en fonction du type de transaction
+     * @param transaction
+     * @throws IllegalArgumentException
+     */
     public void addTransaction(Transaction transaction)throws IllegalArgumentException{
         Taux t = this.getTauxVoulu();
-        if(t==null || t.transactionPossible(transaction.getValeur())==false){
+        if(t==null || !t.transactionPossible(transaction.getValeur())){
             throw new IllegalArgumentException("Transaction impossible : vérifiez les taux");
         }
         switch (transaction.getType()) {
@@ -70,7 +79,12 @@ public class GestionnaireBancaire {
         this.getListeTransaction().add(transaction);
     }
 
-
+    /**
+     * Récupère les taux dans un fichier texte
+     * et les ajoute à la liste des taux
+     * @param cheminFichier
+     * @throws IOException
+     */
     public void recupererFichierTaux(String cheminFichier) throws IOException {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(cheminFichier))) {
