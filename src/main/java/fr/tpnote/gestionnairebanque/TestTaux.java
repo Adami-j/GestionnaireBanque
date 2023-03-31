@@ -93,6 +93,12 @@ public class TestTaux {
             assertEquals(taux.transactionPossible(15),false);
     }
 
+    @Test
+    public void testTransactionTauxNegatif(){
+            taux = new Taux("nom",20,100,-0.1);
+            assertEquals(taux.transactionPossible(35),false);
+    }
+
 
 
 }
