@@ -63,6 +63,12 @@ public class TestTaux {
         assertEquals(taux.getNomTaux(),"nom2");
     }
 
+    @Test
+    public void testTransactionpossible(){
+            taux = new Taux("nom",0,10,0.1);
+            assertEquals(taux.transactionPossible(5),true);
+    }
+
 
 
 
