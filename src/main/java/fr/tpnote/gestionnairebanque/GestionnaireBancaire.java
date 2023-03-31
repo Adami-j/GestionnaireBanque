@@ -6,9 +6,12 @@ import java.util.List;
 public class GestionnaireBancaire {
 
     private List<Transaction> listeTransaction = null;
+    private List<Taux> listeTaux = null;
+    private Double solde = 0d;
 
     public GestionnaireBancaire() {
         this.listeTransaction = new ArrayList<>();
+        this.listeTaux = new ArrayList<>();
     }
 
     public List<Transaction> getListeTransaction() {
@@ -19,4 +22,33 @@ public class GestionnaireBancaire {
         this.listeTransaction = listeTransaction;
     }
 
+    public List<Taux> getListeTaux() {
+        return listeTaux;
+    }
+
+    public Taux getTauxVoulu(){
+        Taux t = null;
+        if (this.getListeTaux()!=null  && this.getListeTaux().size() >0){
+
+        for(Taux taux : this.getListeTaux()){
+            if(taux.transactionPossible((int) taux.getTauxAApliquer())){
+                t = taux;
+            }
+        }
+        }
+        return t;
+    }
+
+    public void setListeTaux(List<Taux> listeTaux) {
+        this.listeTaux = listeTaux;
+    }
+
+    public void addTransaction(Transaction transaction)throws IllegalArgumentException{
+        Taux t = this.getTauxVoulu();
+        System.out.println(t);
+        if(t==null||t.transactionPossible((int) transaction.getValeur())==false){
+            throw new IllegalArgumentException("Transaction impossible : vérifiez les taux");
+        }
+        this.getListeTransaction().add(transaction);
+    }
 }
