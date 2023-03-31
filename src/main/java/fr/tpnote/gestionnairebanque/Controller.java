@@ -24,18 +24,18 @@ public class Controller {
     ListView<String> listeTransaction= new ListView<>();
 
     @FXML
-    ComboBox comboboxid;
+    ComboBox<String> comboboxid;
 
     @FXML
     Button enregistrer;
 
-    public Controller() throws IOException {
+    public Controller() {
     }
 
     @FXML
     public void initialize() throws IOException {
         banque = new GestionnaireBancaire();
-        ObservableList<Transaction> items = listeTransaction.getItems();
+
         ObservableList<String> itemsCombo = FXCollections.observableArrayList("Crédit", "Débit");
         comboboxid.setItems(itemsCombo);
         solde.setText(banque.getSolde().toString());
@@ -59,7 +59,7 @@ public class Controller {
         Transaction t = new Transaction(nom.getText(), type, Double.parseDouble(montant.getText()));
         banque.addTransaction(t);
 
-        listeTransaction.getItems().add(t); // Ajout de la transaction à l'observable list
+        listeTransaction.getItems().add(t.getNom() + " " + t.getValeur()); // Ajout de la transaction à l'observable list
         solde.setText(banque.getSolde().toString());
 
         if(Double.valueOf(solde.getText())<0d){

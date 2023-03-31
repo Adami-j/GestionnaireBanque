@@ -35,9 +35,10 @@
       <Label text="Compte" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <ListView fx:id="listeTransaction" prefHeight="86.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
       <Label text="Solde" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <Button fx:id="enregistrer" mnemonicParsing="false" text="Enregistrer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button fx:id="enregistrer" mnemonicParsing="false" text="Enregistrer" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" onAction="#actionEnregistrer" />
       <Label fx:id="solde" GridPane.columnIndex="3" GridPane.rowIndex="5" />
       <ComboBox fx:id="comboboxid" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
    </children>
 
   <!-- Label "Transaction" -->
