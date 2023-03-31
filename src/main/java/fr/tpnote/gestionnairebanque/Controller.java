@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class Controller {
     private Label solde;
 
     @FXML
-    ListView<Transaction> listeTransaction= new ListView<>();
+    ListView<String> listeTransaction= new ListView<>();
 
     @FXML
     ComboBox comboboxid;
@@ -60,6 +61,12 @@ public class Controller {
 
         listeTransaction.getItems().add(t); // Ajout de la transaction à l'observable list
         solde.setText(banque.getSolde().toString());
+
+        if(Double.valueOf(solde.getText())<0d){
+            solde.setTextFill(Color.rgb(255,0,0));
+        }else{
+            solde.setTextFill(Color.rgb(0,255,0));
+        }
 
 
     }
