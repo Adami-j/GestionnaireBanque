@@ -47,7 +47,7 @@ public class Taux implements Serializable {
         this.nomTaux = nomTaux;
     }
 
-    public boolean transactionPossible(int i) throws IllegalArgumentException {
+    public boolean transactionPossible(double i) throws IllegalArgumentException {
         if(i<0 || i<this.getTauxInferieur() || i>this.getTauxSuperieur() || this.getTauxAApliquer() < 0 || this.getTauxAApliquer() >= 100){
             throw new IllegalArgumentException("Transaction impossible : vérifiez les taux");
         }
