@@ -48,11 +48,10 @@ public class GestionnaireBancaire {
 
     public void addTransaction(Transaction transaction)throws IllegalArgumentException{
         Taux t = this.getTauxVoulu();
-        System.out.println(t);
-        System.out.println(t.transactionPossible((double) transaction.getValeur()));
-        if(t==null||t.transactionPossible((double) transaction.getValeur())==false){
+        if(t.transactionPossible(transaction.getValeur())==false){
             throw new IllegalArgumentException("Transaction impossible : vérifiez les taux");
         }
+        this.solde+=transaction.getValeur();
         this.getListeTransaction().add(transaction);
     }
 
@@ -65,7 +64,6 @@ public class GestionnaireBancaire {
 
                 if (valeurs.length != 4) {
                     System.err.println("Erreur : la ligne \"" + ligne + "\" ne contient pas 3 valeurs.");
-                    continue;
                 }
                 try {
                     String niveau = valeurs[0];
@@ -77,7 +75,7 @@ public class GestionnaireBancaire {
                     this.getListeTaux().add(nouveauTaux);
                 } catch (NumberFormatException e) {
                     System.err.println("Erreur : impossible de convertir une valeur en nombre dans la ligne \"" + ligne + "\".");
-                    continue;
+
                 }
             }
         } catch (IOException e) {
