@@ -18,6 +18,36 @@ public class GestionnaireBancaireTest {
       @Test
     public void testInitialisationGestionnaireRecupererListeTransaction() {
           banque = new GestionnaireBancaire();
-          assertEquals( banque.getListeTransaction().toArray(), new ArrayList<Transaction>());
+          assertEquals( banque.getListeTransaction(), new ArrayList<Transaction>());
       }
+
+      @Test
+      public void testTailleVideListeTransaction() {
+          banque = new GestionnaireBancaire();
+          assertEquals( banque.getListeTransaction().size(), 0);
+      }
+      @Test
+    public void testAjoutTransaction() {
+            banque = new GestionnaireBancaire();
+            banque.getListeTransaction().add(new Transaction("test", 'c', 15d));
+            assertEquals( banque.getListeTransaction().size(), 1);
+    }
+
+    @Test
+    public void testtransactionNegative() {
+        banque = new GestionnaireBancaire();
+        banque.getListeTransaction().add(new Transaction("test", 'c', -15d));
+        banque.addTransaction(new Transaction("test", 'c', -15d));
+        banque.getListeTaux().add(new Taux("test", 0, 100, 10));
+        assertEquals( banque.getListeTransaction().size(), 0);
+    }
+
+    @Test
+    public void testtransactionValeurZero() {
+        banque = new GestionnaireBancaire();
+        banque.getListeTransaction().add(new Transaction("test", 'c', 0d));
+        assertEquals( banque.getListeTransaction().size(), 0);
+    }
+
+
 }
