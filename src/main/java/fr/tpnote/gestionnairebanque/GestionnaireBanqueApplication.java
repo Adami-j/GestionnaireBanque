@@ -14,6 +14,8 @@ public class GestionnaireBanqueApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 600, 200);
         stage.setTitle("Gestion bancaire");
         stage.setResizable(false);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         scene.getRoot().setStyle("-fx-background-color: lightgrey;");
         stage.setScene(scene);
         stage.show();
